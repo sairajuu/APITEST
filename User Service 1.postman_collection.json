@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "67a3a8c4-74d0-47e0-9dfe-a4e40f63be23",
+		"name": "User Service 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34683547"
+	},
+	"item": [
+		{
+			"name": "View All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check Status Code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"CheckPhoneNumber\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var i = 0; i < jsonData.length; i++) {\r",
+							"        if (jsonData[i].userId === 1002) {\r",
+							"            pm.expect(jsonData[i].userMobile).to.equal(\"2121412121\");\r",
+							"        }\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"uuid": "109eea79-c295-49dc-a02f-85eb3962198e"
+					}
+				],
+				"url": {
+					"raw": "https://webapps.tekstac.com/MovieAPI/UserService/viewUserList",
+					"protocol": "https",
+					"host": [
+						"webapps",
+						"tekstac",
+						"com"
+					],
+					"path": [
+						"MovieAPI",
+						"UserService",
+						"viewUserList"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
